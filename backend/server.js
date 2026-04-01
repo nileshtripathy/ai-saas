@@ -5,6 +5,10 @@ const cors = require('cors');
 
 const connectDB = require('./config/db');
 
+const authRoutes = require('./routes/authRoutes');
+const leadRoutes = require('./routes/leadRoutes');
+const paymentRoutes = require('./routes/paymentRoutes');
+
 const app = express();
 
 connectDB();
@@ -13,22 +17,15 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.status(200).send("API Running 🚀");
+    res.send("API Running 🚀");
 });
 
-app.use((req, res, next) => {
-    res.status(404).json({
-        success: false,
-        message: "Route Not Found"
-    });
-});
+app.use('/api/auth', authRoutes);
+app.use('/api/leads', leadRoutes);
+app.use('/api/payment', paymentRoutes);
 
-app.use((err, req, res, next) => {
-    console.error(err.message);
-    res.status(err.status || 500).json({
-        success: false,
-        message: err.message || "Internal Server Error"
-    });
+app.use((req, res) => {
+    res.status(404).json({ message: "Route Not Found" });
 });
 
 const PORT = process.env.PORT || 3000;

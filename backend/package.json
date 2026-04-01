@@ -7,16 +7,24 @@
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
-  "keywords": ["saas", "ai", "whatsapp", "automation"],
+  "keywords": [
+    "saas",
+    "ai",
+    "whatsapp",
+    "automation"
+  ],
   "author": "Nilesh",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
     "axios": "^1.14.0",
+"bcryptjs": "^2.4.3",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
-    "express": "^5.2.1",
-    "mongoose": "^9.3.3"
+"express": "^4.21.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.3.3",
+    "razorpay": "^2.9.6"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
